@@ -1,0 +1,39 @@
+<!DOCTYPE>
+<html>
+  <head>
+    <title>Test Runner</title>
+    <script src="calendar.js"></script>
+  </head>
+  <body>
+    <h3>
+      README
+    </h3>
+    <h5>
+      1. To execute the program, open this 'index.html' file in your browser.
+    </h5>
+    <h5>
+      2. Open up the browser's JavaScript console to run commands. Note that because the language is JavaScript, functions are executed with parentheses and semicolons. Eg. 
+      <p>ADD("a", 10, 20);</p>
+      <p>QUERY(10);</p> 
+      <p>CLEAR();</p>
+
+      <p>The <strong>calendar</strong> object is the object that contains all the methods and data.</p>
+      <p><strong>calendar.events.startTimes</strong> is a sorted array of custom objects called EventStart. It is sorted by its start time.</p>
+      <p><strong>calendar.events.endTimes</strong> is a JavaScript object/associative array with each key being the id of the event and the value being the end time for that event. Since each id is unique, there will not be any overlapping keys.</p>
+    </h5>
+
+    <h3>
+      Runtime and Space analysis:
+    </h3>
+    <h5>
+      <p>The <strong>ADD</strong> function adds a custom object instance called EventStart with the following data stored in it: start and id. These object instances are stored in a sorted array. Every ADD operation will use quicksort to find where in the array the new object is inserted.</p> (O(nlogn) run time. O(n) space.)
+
+      <p>The ADD function will also add the id and end time to an object which can be read by calling <strong>calendar.events.endTimes</strong>. (O(C) runtime. O(N) space.)</p>
+
+      <p>The <strong>QUERY</strong> function iterates through the sorted start time array finding any ids with a start time lower than the parameter value. Once it reaches the index of the array which has a value greater than the value, it stops the loop. It then compares the ids with the endTimes object and appends the id to a return value if the end time is greater than the parameter value. (O(n) runtime for start time. O(C) runtime for end time. O(N) space for both.)</p> 
+
+      <p>The <strong>CLEAR</strong> function just resets the values inside the calendar object. (O(C) runtime and space)
+
+    </h5>
+  </body>
+</html>
